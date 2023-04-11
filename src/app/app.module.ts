@@ -15,6 +15,7 @@ import { ContextMenuModule } from '@ctrl/ngx-rightclick';
 
 import { CoreModule } from '@core/core.module';
 import { CoreCommonModule } from '@core/common.module';
+import { CoreSidebarModule, CoreThemeCustomizerModule } from '@core/components';
 import { CardSnippetModule } from '@core/components/card-snippet/card-snippet.module';
 
 import { coreConfig } from 'app/app-config';
@@ -25,10 +26,6 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 
-import { ContextMenuComponent } from 'app/main/extensions/context-menu/context-menu.component';
-import { AnimatedCustomContextMenuComponent } from './main/extensions/context-menu/custom-context-menu/animated-custom-context-menu/animated-custom-context-menu.component';
-import { BasicCustomContextMenuComponent } from './main/extensions/context-menu/custom-context-menu/basic-custom-context-menu/basic-custom-context-menu.component';
-import { SubMenuCustomContextMenuComponent } from './main/extensions/context-menu/custom-context-menu/sub-menu-custom-context-menu/sub-menu-custom-context-menu.component';
 
 const appRoutes: Routes = [
   {
@@ -49,15 +46,11 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/components/components.module').then(m => m.ComponentsModule),
     canActivate: [AuthGuard]
   },
-  {
-    path: 'extensions',
-    loadChildren: () => import('./main/extensions/extensions.module').then(m => m.ExtensionsModule),
-    canActivate: [AuthGuard]
-  },
+
 
   {
     path: '',
-    redirectTo: '/dashboard/ecommerce',
+    redirectTo: '/dashboard/analytics',
     pathMatch: 'full'
   },
   {
@@ -69,10 +62,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ContextMenuComponent,
-    BasicCustomContextMenuComponent,
-    AnimatedCustomContextMenuComponent,
-    SubMenuCustomContextMenuComponent
+
   ],
   imports: [
     BrowserModule,
@@ -92,6 +82,8 @@ const appRoutes: Routes = [
     ContextMenuModule,
     CoreModule.forRoot(coreConfig),
     CoreCommonModule,
+    CoreSidebarModule,
+    CoreThemeCustomizerModule,
     CardSnippetModule,
     LayoutModule,
     ContentHeaderModule
@@ -104,7 +96,7 @@ const appRoutes: Routes = [
     // ! IMPORTANT: Provider used to create fake backend, comment while using real API
     fakeBackendProvider
   ],
-  entryComponents: [BasicCustomContextMenuComponent, AnimatedCustomContextMenuComponent],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

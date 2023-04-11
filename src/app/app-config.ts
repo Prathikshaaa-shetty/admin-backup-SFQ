@@ -16,9 +16,9 @@ import { CoreConfig } from '@core/types';
 // prettier-ignore
 export const coreConfig: CoreConfig = {
   app: {
-    appName: 'Source for Quality',                                        // App Name
-    appTitle: 'Source for Quality Admin ', // App Title
-    appLogoImage: '',                  // App Logo
+    appName: 'Source for quality',                                        // App Name
+    appTitle: 'Source for quality', // App Title
+    appLogoImage: 'assets/images/logo/logo.svg',                  // App Logo
     appLanguage: 'en',                                           // App Default Language (en, fr, de, pt etc..)
   },
   layout: {

@@ -14,10 +14,10 @@ import { Role } from 'app/auth/models';
 import { CoreCommonModule } from '@core/common.module';
 
 
+
 import { DashboardService } from 'app/main/dashboard/dashboard.service';
 
 import { AnalyticsComponent } from 'app/main/dashboard/analytics/analytics.component';
-import { EcommerceComponent } from 'app/main/dashboard/ecommerce/ecommerce.component';
 
 const routes = [
   {
@@ -30,19 +30,11 @@ const routes = [
 
     }
   },
-  {
-    path: 'ecommerce',
-    component: EcommerceComponent,
-    canActivate: [AuthGuard],
-    resolve: {
-      css: DashboardService
-    },
-    data: { animation: 'decommerce' }
-  }
+
 ];
 
 @NgModule({
-  declarations: [AnalyticsComponent, EcommerceComponent],
+  declarations: [AnalyticsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -53,7 +45,6 @@ const routes = [
     NgApexchartsModule,
 
   ],
-  providers: [DashboardService],
-  exports: [EcommerceComponent]
+  providers: [DashboardService]
 })
 export class DashboardModule { }

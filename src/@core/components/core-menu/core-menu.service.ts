@@ -122,7 +122,7 @@ export class CoreMenuService {
   getMenu(key): any {
     // Confirm if the menu exists
     if (!this._registry[key]) {
-      console.warn(`Menu with the key '${key}' doesn't exist in the registry_currentMenuKey.`);
+      console.warn(`Menu with the key '${key}' doesn't exist in the registry.`);
 
       return;
     }

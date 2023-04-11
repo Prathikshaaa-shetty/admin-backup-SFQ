@@ -45,7 +45,6 @@ export class UserListComponent implements OnInit {
 
   public selectStatus: any = [
     { name: 'All', value: '' },
-    { name: 'Pending', value: 'Pending' },
     { name: 'Active', value: 'Active' },
     { name: 'Inactive', value: 'Inactive' }
   ];

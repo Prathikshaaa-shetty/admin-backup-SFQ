@@ -8,8 +8,10 @@ import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import timeGridPlugin from '@fullcalendar/timegrid';
 
+
 // routing
 const routes: Routes = [
+
 
   {
     path: 'user',
@@ -17,11 +19,12 @@ const routes: Routes = [
   }
 ];
 
-
 FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]);
 
 @NgModule({
-  declarations: [],
+  declarations: [
+
+  ],
   imports: [CommonModule, RouterModule.forChild(routes)]
 })
 export class AppsModule { }

@@ -5,6 +5,7 @@ import { takeUntil, filter } from 'rxjs/operators';
 
 import { CoreConfigService } from '@core/services/config.service';
 import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
+import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 
 @Component({
   selector: 'horizontal-menu',
@@ -29,7 +30,7 @@ export class HorizontalMenuComponent implements OnInit, OnDestroy {
   constructor(
     private _coreConfigService: CoreConfigService,
     private _coreMenuService: CoreMenuService,
-
+    private _coreSidebarService: CoreSidebarService
   ) {
     // Set the private defaults
     this._unsubscribeAll = new Subject();
