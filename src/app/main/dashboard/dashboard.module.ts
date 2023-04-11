@@ -14,7 +14,6 @@ import { Role } from 'app/auth/models';
 import { CoreCommonModule } from '@core/common.module';
 
 
-
 import { DashboardService } from 'app/main/dashboard/dashboard.service';
 
 import { AnalyticsComponent } from 'app/main/dashboard/analytics/analytics.component';

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
 import { CoreConfigService } from '@core/services/config.service';
+import { CoreTranslationService } from '@core/services/translation.service';
 
 import { User } from 'app/auth/models';
 import { colors } from 'app/colors.const';
@@ -72,12 +73,13 @@ export class EcommerceComponent implements OnInit {
     private _authenticationService: AuthenticationService,
     private _dashboardService: DashboardService,
     private _coreConfigService: CoreConfigService,
+    private _coreTranslationService: CoreTranslationService
   ) {
     this._authenticationService.currentUser.subscribe(x => (this.currentUser = x));
     this.isAdmin = this._authenticationService.isAdmin;
     this.isClient = this._authenticationService.isClient;
 
-
+    this._coreTranslationService.translate(english, french, german, portuguese);
     // Statistics Bar Chart
     this.statisticsBar = {
       chart: {

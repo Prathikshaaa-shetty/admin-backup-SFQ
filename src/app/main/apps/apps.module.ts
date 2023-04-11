@@ -11,12 +11,12 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 // routing
 const routes: Routes = [
 
-
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   }
 ];
+
 
 FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]);
 

@@ -7,7 +7,6 @@ import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 
 import { CoreConfigService } from '@core/services/config.service';
 import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
-import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 
 @Component({
   selector: 'vertical-menu',
@@ -35,7 +34,6 @@ export class VerticalMenuComponent implements OnInit, OnDestroy {
   constructor(
     private _coreConfigService: CoreConfigService,
     private _coreMenuService: CoreMenuService,
-    private _coreSidebarService: CoreSidebarService,
     private _router: Router
   ) {
     // Set the private defaults
@@ -56,19 +54,8 @@ export class VerticalMenuComponent implements OnInit, OnDestroy {
       this.coreConfig = config;
     });
 
-    this.isCollapsed = this._coreSidebarService.getSidebarRegistry('menu').collapsed;
 
-    // Close the menu on router NavigationEnd (Required for small screen to close the menu on select)
-    this._router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd),
-        takeUntil(this._unsubscribeAll)
-      )
-      .subscribe(() => {
-        if (this._coreSidebarService.getSidebarRegistry('menu')) {
-          this._coreSidebarService.getSidebarRegistry('menu').close();
-        }
-      });
+
 
     // scroll to active on navigation end
     this._router.events
@@ -108,20 +95,12 @@ export class VerticalMenuComponent implements OnInit, OnDestroy {
   /**
    * On Sidebar scroll set isScrolled as true
    */
-  onSidebarScroll(): void {
-    if (this.directiveRef.position(true).y > 3) {
-      this.isScrolled = true;
-    } else {
-      this.isScrolled = false;
-    }
-  }
+
 
   /**
    * Toggle sidebar expanded status
    */
-  toggleSidebar(): void {
-    this._coreSidebarService.getSidebarRegistry('menu').toggleOpen();
-  }
+
 
   /**
    * Toggle sidebar collapsed status

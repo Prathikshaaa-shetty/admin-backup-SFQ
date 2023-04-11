@@ -8,9 +8,9 @@ import { TranslateService } from '@ngx-translate/core';
 import * as Waves from 'node-waves';
 
 import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
-import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 import { CoreConfigService } from '@core/services/config.service';
 import { CoreLoadingScreenService } from '@core/services/loading-screen.service';
+import { CoreTranslationService } from '@core/services/translation.service';
 
 import { menu } from 'app/menu/menu';
 import { locale as menuEnglish } from 'app/menu/i18n/en';
@@ -52,10 +52,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private _renderer: Renderer2,
     private _elementRef: ElementRef,
     public _coreConfigService: CoreConfigService,
-    private _coreSidebarService: CoreSidebarService,
     private _coreLoadingScreenService: CoreLoadingScreenService,
     private _coreMenuService: CoreMenuService,
-
+    private _coreTranslationService: CoreTranslationService,
     private _translateService: TranslateService
   ) {
     // Get the application main menu
@@ -74,7 +73,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this._translateService.setDefaultLang('en');
 
     // Set the translations for the menu
-
+    this._coreTranslationService.translate(menuEnglish, menuFrench, menuGerman, menuPortuguese);
 
     // Set the private defaults
     this._unsubscribeAll = new Subject();
@@ -255,7 +254,5 @@ export class AppComponent implements OnInit, OnDestroy {
    *
    * @param key
    */
-  toggleSidebar(key): void {
-    this._coreSidebarService.getSidebarRegistry(key).toggleOpen();
-  }
+
 }

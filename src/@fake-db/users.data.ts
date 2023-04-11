@@ -11,8 +11,7 @@ export class UsersFakeData {
       email: 'gslixby0@abc.net.au',
       currentPlan: 'Enterprise',
       status: 'inactive',
-      avatar: '',
-      date: '1/2/2023'
+      avatar: ''
     },
     {
       id: 2,
@@ -25,8 +24,7 @@ export class UsersFakeData {
       email: 'hredmore1@imgur.com',
       currentPlan: 'Team',
       status: 'pending',
-      avatar: 'assets/images/avatars/10.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/10.png'
     },
     {
       id: 3,
@@ -39,8 +37,7 @@ export class UsersFakeData {
       email: 'msicely2@who.int',
       currentPlan: 'Enterprise',
       status: 'active',
-      avatar: 'assets/images/avatars/1.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/1.png'
     },
     {
       id: 4,
@@ -53,8 +50,7 @@ export class UsersFakeData {
       email: 'crisby3@wordpress.com',
       currentPlan: 'Team',
       status: 'inactive',
-      avatar: 'assets/images/avatars/9.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/9.png'
     },
     {
       id: 5,
@@ -67,8 +63,7 @@ export class UsersFakeData {
       email: 'mhurran4@yahoo.co.jp',
       currentPlan: 'Enterprise',
       status: 'pending',
-      avatar: 'assets/images/avatars/10.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/10.png'
     },
     {
       id: 6,
@@ -81,8 +76,7 @@ export class UsersFakeData {
       email: 'shalstead5@shinystat.com',
       currentPlan: 'Company',
       status: 'active',
-      avatar: '',
-      date: '1/2/2023'
+      avatar: ''
     },
     {
       id: 7,
@@ -95,8 +89,7 @@ export class UsersFakeData {
       email: 'bgallemore6@boston.com',
       currentPlan: 'Company',
       status: 'pending',
-      avatar: '',
-      date: '1/2/2023'
+      avatar: ''
     },
     {
       id: 8,
@@ -109,8 +102,7 @@ export class UsersFakeData {
       email: 'kliger7@vinaora.com',
       currentPlan: 'Enterprise',
       status: 'pending',
-      avatar: 'assets/images/avatars/9.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/9.png'
     },
     {
       id: 9,
@@ -123,8 +115,7 @@ export class UsersFakeData {
       email: 'fscotfurth8@dailymotion.com',
       currentPlan: 'Team',
       status: 'pending',
-      avatar: 'assets/images/avatars/2.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/2.png'
     },
     {
       id: 10,
@@ -137,8 +128,7 @@ export class UsersFakeData {
       email: 'jbellany9@kickstarter.com',
       currentPlan: 'Company',
       status: 'inactive',
-      avatar: 'assets/images/avatars/9.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/9.png'
     },
     {
       id: 11,
@@ -151,8 +141,7 @@ export class UsersFakeData {
       email: 'jwharltona@oakley.com',
       currentPlan: 'Team',
       status: 'inactive',
-      avatar: 'assets/images/avatars/4.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/4.png'
     },
     {
       id: 12,
@@ -165,8 +154,7 @@ export class UsersFakeData {
       email: 'shallamb@hugedomains.com',
       currentPlan: 'Team',
       status: 'pending',
-      avatar: 'assets/images/avatars/5.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/5.png'
     },
     {
       id: 13,
@@ -179,8 +167,7 @@ export class UsersFakeData {
       email: 'ypottiec@privacy.gov.au',
       currentPlan: 'Basic',
       status: 'inactive',
-      avatar: 'assets/images/avatars/7.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/7.png'
     },
     {
       id: 14,
@@ -193,8 +180,7 @@ export class UsersFakeData {
       email: 'mkraused@stanford.edu',
       currentPlan: 'Team',
       status: 'active',
-      avatar: 'assets/images/avatars/9.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/9.png'
     },
     {
       id: 15,
@@ -207,8 +193,7 @@ export class UsersFakeData {
       email: 'zmcclevertye@soundcloud.com',
       currentPlan: 'Enterprise',
       status: 'active',
-      avatar: 'assets/images/avatars/2.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/2.png'
     },
     {
       id: 16,
@@ -221,8 +206,7 @@ export class UsersFakeData {
       email: 'bemblinf@wired.com',
       currentPlan: 'Company',
       status: 'active',
-      avatar: 'assets/images/avatars/6.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/6.png'
     },
     {
       id: 17,
@@ -235,8 +219,7 @@ export class UsersFakeData {
       email: 'bmylesg@amazon.com',
       currentPlan: 'Basic',
       status: 'active',
-      avatar: '',
-      date: '1/2/2023'
+      avatar: ''
     },
     {
       id: 18,
@@ -249,8 +232,7 @@ export class UsersFakeData {
       email: 'bbinerh@mozilla.com',
       currentPlan: 'Team',
       status: 'active',
-      avatar: 'assets/images/avatars/7.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/7.png'
     },
     {
       id: 19,
@@ -263,8 +245,7 @@ export class UsersFakeData {
       email: 'tbruntjeni@sitemeter.com',
       currentPlan: 'Enterprise',
       status: 'active',
-      avatar: '',
-      date: '1/2/2023'
+      avatar: ''
     },
     {
       id: 20,
@@ -277,8 +258,397 @@ export class UsersFakeData {
       email: 'wburlandj@uiuc.edu',
       currentPlan: 'Team',
       status: 'inactive',
-      avatar: 'assets/images/avatars/6.png',
-      date: '1/2/2023'
+      avatar: 'assets/images/avatars/6.png'
+    },
+    {
+      id: 21,
+      fullName: 'Stu Delamaine',
+      company: 'Oyoloo PVT LTD',
+      role: 'Author',
+      username: 'sdelamainek',
+      country: 'South Africa',
+      contact: '(829) 537-0057',
+      email: 'sdelamainek@who.int',
+      currentPlan: 'Basic',
+      status: 'pending',
+      avatar: 'assets/images/avatars/1.png'
+    },
+    {
+      id: 22,
+      fullName: 'Jameson Lyster',
+      company: 'Quaxo PVT LTD',
+      role: 'Editor',
+      username: 'jlysterl',
+      country: 'Ukraine',
+      contact: '(593) 624-0222',
+      email: 'jlysterl@guardian.co.uk',
+      currentPlan: 'Company',
+      status: 'inactive',
+      avatar: 'assets/images/avatars/8.png'
+    },
+    {
+      id: 23,
+      fullName: 'Kare Skitterel',
+      company: 'Ainyx PVT LTD',
+      role: 'Maintainer',
+      username: 'kskitterelm',
+      country: 'Poland',
+      contact: '(254) 845-4107',
+      email: 'kskitterelm@washingtonpost.com',
+      currentPlan: 'Basic',
+      status: 'pending',
+      avatar: 'assets/images/avatars/3.png'
+    },
+    {
+      id: 24,
+      fullName: 'Cleavland Hatherleigh',
+      company: 'Flipopia PVT LTD',
+      role: 'Admin',
+      username: 'chatherleighn',
+      country: 'Brazil',
+      contact: '(700) 783-7498',
+      email: 'chatherleighn@washington.edu',
+      currentPlan: 'Team',
+      status: 'pending',
+      avatar: 'assets/images/avatars/2.png'
+    },
+    {
+      id: 25,
+      fullName: 'Adeline Micco',
+      company: 'Topicware PVT LTD',
+      role: 'Admin',
+      username: 'amiccoo',
+      country: 'France',
+      contact: '(227) 598-1841',
+      email: 'amiccoo@whitehouse.gov',
+      currentPlan: 'Enterprise',
+      status: 'pending',
+      avatar: ''
+    },
+    {
+      id: 26,
+      fullName: 'Hugh Hasson',
+      company: 'Skinix PVT LTD',
+      role: 'Admin',
+      username: 'hhassonp',
+      country: 'China',
+      contact: '(582) 516-1324',
+      email: 'hhassonp@bizjournals.com',
+      currentPlan: 'Basic',
+      status: 'inactive',
+      avatar: 'assets/images/avatars/4.png'
+    },
+    {
+      id: 27,
+      fullName: 'Germain Jacombs',
+      company: 'Youopia PVT LTD',
+      role: 'Editor',
+      username: 'gjacombsq',
+      country: 'Zambia',
+      contact: '(137) 467-5393',
+      email: 'gjacombsq@jigsy.com',
+      currentPlan: 'Enterprise',
+      status: 'active',
+      avatar: 'assets/images/avatars/10.png'
+    },
+    {
+      id: 28,
+      fullName: 'Bree Kilday',
+      company: 'Jetpulse PVT LTD',
+      role: 'Maintainer',
+      username: 'bkildayr',
+      country: 'Portugal',
+      contact: '(412) 476-0854',
+      email: 'bkildayr@mashable.com',
+      currentPlan: 'Team',
+      status: 'active',
+      avatar: ''
+    },
+    {
+      id: 29,
+      fullName: 'Candice Pinyon',
+      company: 'Kare PVT LTD',
+      role: 'Maintainer',
+      username: 'cpinyons',
+      country: 'Sweden',
+      contact: '(170) 683-1520',
+      email: 'cpinyons@behance.net',
+      currentPlan: 'Team',
+      status: 'active',
+      avatar: 'assets/images/avatars/7.png'
+    },
+    {
+      id: 30,
+      fullName: 'Isabel Mallindine',
+      company: 'Voomm PVT LTD',
+      role: 'Subscriber',
+      username: 'imallindinet',
+      country: 'Slovenia',
+      contact: '(332) 803-1983',
+      email: 'imallindinet@shinystat.com',
+      currentPlan: 'Team',
+      status: 'pending',
+      avatar: ''
+    },
+    {
+      id: 31,
+      fullName: 'Gwendolyn Meineken',
+      company: 'Oyondu PVT LTD',
+      role: 'Admin',
+      username: 'gmeinekenu',
+      country: 'Moldova',
+      contact: '(551) 379-7460',
+      email: 'gmeinekenu@hc360.com',
+      currentPlan: 'Basic',
+      status: 'pending',
+      avatar: 'assets/images/avatars/1.png'
+    },
+    {
+      id: 32,
+      fullName: 'Rafaellle Snowball',
+      company: 'Fivespan PVT LTD',
+      role: 'Editor',
+      username: 'rsnowballv',
+      country: 'Philippines',
+      contact: '(974) 829-0911',
+      email: 'rsnowballv@indiegogo.com',
+      currentPlan: 'Basic',
+      status: 'pending',
+      avatar: 'assets/images/avatars/5.png'
+    },
+    {
+      id: 33,
+      fullName: 'Rochette Emer',
+      company: 'Thoughtworks PVT LTD',
+      role: 'Admin',
+      username: 'remerw',
+      country: 'North Korea',
+      contact: '(841) 889-3339',
+      email: 'remerw@blogtalkradio.com',
+      currentPlan: 'Basic',
+      status: 'active',
+      avatar: 'assets/images/avatars/8.png'
+    },
+    {
+      id: 34,
+      fullName: 'Ophelie Fibbens',
+      company: 'Jaxbean PVT LTD',
+      role: 'Subscriber',
+      username: 'ofibbensx',
+      country: 'Indonesia',
+      contact: '(764) 885-7351',
+      email: 'ofibbensx@booking.com',
+      currentPlan: 'Company',
+      status: 'active',
+      avatar: 'assets/images/avatars/4.png'
+    },
+    {
+      id: 35,
+      fullName: 'Stephen MacGilfoyle',
+      company: 'Browseblab PVT LTD',
+      role: 'Maintainer',
+      username: 'smacgilfoyley',
+      country: 'Japan',
+      contact: '(350) 589-8520',
+      email: 'smacgilfoyley@bigcartel.com',
+      currentPlan: 'Company',
+      status: 'pending',
+      avatar: ''
+    },
+    {
+      id: 36,
+      fullName: 'Bradan Rosebotham',
+      company: 'Agivu PVT LTD',
+      role: 'Subscriber',
+      username: 'brosebothamz',
+      country: 'Belarus',
+      contact: '(882) 933-2180',
+      email: 'brosebothamz@tripadvisor.com',
+      currentPlan: 'Team',
+      status: 'inactive',
+      avatar: ''
+    },
+    {
+      id: 37,
+      fullName: 'Skip Hebblethwaite',
+      company: 'Katz PVT LTD',
+      role: 'Admin',
+      username: 'shebblethwaite10',
+      country: 'Canada',
+      contact: '(610) 343-1024',
+      email: 'shebblethwaite10@arizona.edu',
+      currentPlan: 'Company',
+      status: 'inactive',
+      avatar: 'assets/images/avatars/9.png'
+    },
+    {
+      id: 38,
+      fullName: 'Moritz Piccard',
+      company: 'Twitternation PVT LTD',
+      role: 'Maintainer',
+      username: 'mpiccard11',
+      country: 'Croatia',
+      contact: '(365) 277-2986',
+      email: 'mpiccard11@vimeo.com',
+      currentPlan: 'Enterprise',
+      status: 'inactive',
+      avatar: 'assets/images/avatars/1.png'
+    },
+    {
+      id: 39,
+      fullName: 'Tyne Widmore',
+      company: 'Yombu PVT LTD',
+      role: 'Subscriber',
+      username: 'twidmore12',
+      country: 'Finland',
+      contact: '(531) 731-0928',
+      email: 'twidmore12@bravesites.com',
+      currentPlan: 'Team',
+      status: 'pending',
+      avatar: ''
+    },
+    {
+      id: 40,
+      fullName: 'Florenza Desporte',
+      company: 'Kamba PVT LTD',
+      role: 'Author',
+      username: 'fdesporte13',
+      country: 'Ukraine',
+      contact: '(312) 104-2638',
+      email: 'fdesporte13@omniture.com',
+      currentPlan: 'Company',
+      status: 'active',
+      avatar: 'assets/images/avatars/6.png'
+    },
+    {
+      id: 41,
+      fullName: 'Edwina Baldetti',
+      company: 'Dazzlesphere PVT LTD',
+      role: 'Maintainer',
+      username: 'ebaldetti14',
+      country: 'Haiti',
+      contact: '(315) 329-3578',
+      email: 'ebaldetti14@theguardian.com',
+      currentPlan: 'Team',
+      status: 'pending',
+      avatar: ''
+    },
+    {
+      id: 42,
+      fullName: 'Benedetto Rossiter',
+      company: 'Mybuzz PVT LTD',
+      role: 'Editor',
+      username: 'brossiter15',
+      country: 'Indonesia',
+      contact: '(323) 175-6741',
+      email: 'brossiter15@craigslist.org',
+      currentPlan: 'Team',
+      status: 'inactive',
+      avatar: ''
+    },
+    {
+      id: 43,
+      fullName: 'Micaela McNirlan',
+      company: 'Tambee PVT LTD',
+      role: 'Admin',
+      username: 'mmcnirlan16',
+      country: 'Indonesia',
+      contact: '(242) 952-0916',
+      email: 'mmcnirlan16@hc360.com',
+      currentPlan: 'Basic',
+      status: 'inactive',
+      avatar: ''
+    },
+    {
+      id: 44,
+      fullName: 'Vladamir Koschek',
+      company: 'Centimia PVT LTD',
+      role: 'Author',
+      username: 'vkoschek17',
+      country: 'Guatemala',
+      contact: '(531) 758-8335',
+      email: 'vkoschek17@abc.net.au',
+      currentPlan: 'Team',
+      status: 'active',
+      avatar: ''
+    },
+    {
+      id: 45,
+      fullName: 'Corrie Perot',
+      company: 'Flipopia PVT LTD',
+      role: 'Subscriber',
+      username: 'cperot18',
+      country: 'China',
+      contact: '(659) 385-6808',
+      email: 'cperot18@goo.ne.jp',
+      currentPlan: 'Team',
+      status: 'pending',
+      avatar: 'assets/images/avatars/3.png'
+    },
+    {
+      id: 46,
+      fullName: 'Saunder Offner',
+      company: 'Skalith PVT LTD',
+      role: 'Maintainer',
+      username: 'soffner19',
+      country: 'Poland',
+      contact: '(200) 586-2264',
+      email: 'soffner19@mac.com',
+      currentPlan: 'Enterprise',
+      status: 'pending',
+      avatar: ''
+    },
+    {
+      id: 47,
+      fullName: 'Karena Courtliff',
+      company: 'Feedfire PVT LTD',
+      role: 'Admin',
+      username: 'kcourtliff1a',
+      country: 'China',
+      contact: '(478) 199-0020',
+      email: 'kcourtliff1a@bbc.co.uk',
+      currentPlan: 'Basic',
+      status: 'active',
+      avatar: 'assets/images/avatars/1.png'
+    },
+    {
+      id: 48,
+      fullName: 'Onfre Wind',
+      company: 'Thoughtmix PVT LTD',
+      role: 'Admin',
+      username: 'owind1b',
+      country: 'Ukraine',
+      contact: '(344) 262-7270',
+      email: 'owind1b@yandex.ru',
+      currentPlan: 'Basic',
+      status: 'pending',
+      avatar: ''
+    },
+    {
+      id: 49,
+      fullName: 'Paulie Durber',
+      company: 'Babbleblab PVT LTD',
+      role: 'Subscriber',
+      username: 'pdurber1c',
+      country: 'Sweden',
+      contact: '(694) 676-1275',
+      email: 'pdurber1c@gov.uk',
+      currentPlan: 'Team',
+      status: 'inactive',
+      avatar: ''
+    },
+    {
+      id: 50,
+      fullName: 'Beverlie Krabbe',
+      company: 'Kaymbo PVT LTD',
+      role: 'Editor',
+      username: 'bkrabbe1d',
+      country: 'China',
+      contact: '(397) 294-5153',
+      email: 'bkrabbe1d@home.pl',
+      currentPlan: 'Company',
+      status: 'active',
+      avatar: 'assets/images/avatars/9.png'
     }
   ];
 }

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { CoreConfigService } from '@core/services/config.service';
-import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
+
 
 @Component({
   selector: 'core-theme-customizer',
@@ -31,7 +31,7 @@ export class CoreThemeCustomizerComponent implements OnInit, OnDestroy {
   constructor(
     private _formBuilder: FormBuilder,
     private _coreConfigService: CoreConfigService,
-    private _coreSidebarService: CoreSidebarService
+
   ) {
     // Set the private defaults
     this._unsubscribeAll = new Subject();
@@ -205,7 +205,5 @@ export class CoreThemeCustomizerComponent implements OnInit, OnDestroy {
    *
    * @param key
    */
-  toggleSidebar(key): void {
-    this._coreSidebarService.getSidebarRegistry(key).toggleOpen();
-  }
+
 }

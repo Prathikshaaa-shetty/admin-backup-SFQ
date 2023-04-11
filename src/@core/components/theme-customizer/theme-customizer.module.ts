@@ -38,4 +38,4 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   ],
   exports: [CoreThemeCustomizerComponent]
 })
-export class CoreThemeCustomizerModule {}
+export class CoreThemeCustomizerModule { }
