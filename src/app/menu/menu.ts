@@ -44,10 +44,9 @@ export const menu: CoreMenu[] = [
         id: "supplier",
         title: "Supplier",
         translate: "Food Supplier Management",
-
         type: "item",
         icon: "user",
-        url: "apps/supplier/supplier-list",
+        url: "apps/supplier/food-supplier",
       },
       {
         id: "questionnare",
