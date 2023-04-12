@@ -4,7 +4,8 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
-
+import { AuthenticationService } from 'app/auth/service';
+import { Router } from '@angular/router';
 @Component({
   selector: '[core-menu]',
   templateUrl: './core-menu.component.html',
@@ -29,7 +30,9 @@ export class CoreMenuComponent implements OnInit {
    * @param {ChangeDetectorRef} _changeDetectorRef
    * @param {CoreMenuService} _coreMenuService
    */
-  constructor(private _changeDetectorRef: ChangeDetectorRef, private _coreMenuService: CoreMenuService) {
+  constructor(private _changeDetectorRef: ChangeDetectorRef, private _coreMenuService: CoreMenuService,
+    private _router: Router,
+    private _authenticationService: AuthenticationService,) {
     // Set the private defaults
     this._unsubscribeAll = new Subject();
   }
@@ -40,6 +43,12 @@ export class CoreMenuComponent implements OnInit {
   /**
    * On init
    */
+
+  logout() {
+    this._authenticationService.logout();
+    this._router.navigate(['/pages/authentication/login-v2']);
+  }
+  
   ngOnInit(): void {
     // Set the menu either from the input or from the service
     this.menu = this.menu || this._coreMenuService.getCurrentMenu();

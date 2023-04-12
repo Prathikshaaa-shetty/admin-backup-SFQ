@@ -16,13 +16,18 @@
       <ng-container *ngFor="let item of item.children">
         <!-- item | if openInNewTab set routerLink & routerLinkActive blank -->
         <li core-menu-vertical-item *ngIf="
-            item.type == 'item' && (item.role ? item.role.includes(currentUser.role) : false || item.role == undefined)
+            item.type == 'item'&&item.title !== 'logout' && (item.role ? item.role.includes(currentUser.role) : false || item.role == undefined)
           " [item]="item" [ngClass]="{ disabled: item.disabled === true }"
           [routerLinkActive]="!item.openInNewTab ? 'active' : ''"
           [routerLinkActiveOptions]="{ exact: item.exactMatch || false }">
           <!-- Fix: Required routerLink to identify the active -->
           <span [routerLink]="item.openInNewTab ? [] : [item.url]" class="d-none"></span>
         </li>
+        <li core-menu-vertical-item *ngIf="
+        item.type == 'item' && item.title == 'logout' && 
+        (item.role ? item.role.includes(currentUser.role) : false || item.role == undefined)" 
+        [item]="item" [ngClass]="{ disabled: item.disabled === true }" (click)="logout()" >
+    </li>
         <!-- collapsible -->
         <li core-menu-vertical-collapsible *ngIf="
             item.type == 'collapsible' &&
