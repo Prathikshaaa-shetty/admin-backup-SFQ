@@ -25,6 +25,7 @@ import { JwtInterceptor, ErrorInterceptor } from 'app/auth/helpers';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
+import { AuthenticationModule } from './auth/authentication.module';
 
 
 const appRoutes: Routes = [
@@ -46,8 +47,10 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/components/components.module').then(m => m.ComponentsModule),
     canActivate: [AuthGuard]
   },
-
-
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/authentication.module').then(m => m.AuthenticationModule),
+  },
   {
     path: '',
     redirectTo: '/dashboard/analytics',
@@ -86,7 +89,8 @@ const appRoutes: Routes = [
     CoreThemeCustomizerModule,
     CardSnippetModule,
     LayoutModule,
-    ContentHeaderModule
+    ContentHeaderModule,
+    AuthenticationModule
   ],
 
   providers: [

@@ -147,15 +147,15 @@ export class SearchFakeData {
           isBookmarked: false,
           title: 'Login v1 Page',
           icon: 'user-plus',
-          link: '/pages/authentication/login-v1'
+          link: '/auth/login-v1'
         },
         {
           id: 18,
-          target: 'login-v2',
+          target: 'login',
           isBookmarked: false,
           title: 'Login v2 Page',
           icon: 'user-plus',
-          link: '/pages/authentication/login-v2'
+          link: '/auth/login'
         },
         {
           id: 19,
@@ -163,7 +163,7 @@ export class SearchFakeData {
           isBookmarked: false,
           title: 'Register v1 Page',
           icon: 'user-plus',
-          link: '/pages/authentication/register-v1'
+          link: '/auth/register-v1'
         },
         {
           id: 20,
@@ -171,7 +171,7 @@ export class SearchFakeData {
           isBookmarked: false,
           title: 'Register v2 Page',
           icon: 'user-plus',
-          link: '/pages/authentication/register-v2'
+          link: '/auth/register-v2'
         },
         {
           id: 21,
@@ -179,7 +179,7 @@ export class SearchFakeData {
           isBookmarked: false,
           title: 'Forgot Password v1 Page',
           icon: 'trending-up',
-          link: '/pages/authentication/forgot-password-v1'
+          link: '/auth/forgot-password-v1'
         },
         {
           id: 22,
@@ -187,7 +187,7 @@ export class SearchFakeData {
           isBookmarked: false,
           title: 'Forgot Password v2 Page',
           icon: 'trending-up',
-          link: '/pages/authentication/forgot-password-v2'
+          link: '/auth/forgot-password'
         },
         {
           id: 23,
@@ -195,7 +195,7 @@ export class SearchFakeData {
           isBookmarked: false,
           title: 'Reset Password v1 Page',
           icon: 'trending-up',
-          link: '/pages/authentication/reset-password-v1'
+          link: '/auth/reset-password-v1'
         },
         {
           id: 24,

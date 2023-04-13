@@ -13,7 +13,6 @@ import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { PricingModule } from './pricing/pricing.module';
 
 import { AccountSettingsModule } from './account-settings/account-settings.module';
-import { AuthenticationModule } from './authentication/authentication.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 
 @NgModule({
@@ -25,7 +24,6 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
     NgbModule,
     NgSelectModule,
     FormsModule,
-    AuthenticationModule,
     MiscellaneousModule,
     Ng2FlatpickrModule,
     PricingModule,

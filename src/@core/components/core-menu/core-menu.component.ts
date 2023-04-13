@@ -46,7 +46,7 @@ export class CoreMenuComponent implements OnInit {
 
   logout() {
     this._authenticationService.logout();
-    this._router.navigate(['/pages/authentication/login-v2']);
+    this._router.navigate(['/auth/login']);
   }
   
   ngOnInit(): void {

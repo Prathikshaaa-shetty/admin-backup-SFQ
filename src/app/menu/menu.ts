@@ -103,7 +103,7 @@ export const menu: CoreMenu[] = [
         translate: "Logout",
         type: "item",
         icon: "file-text",
-        url: "pages/authentication/login-v2",
+        url: "auth/login",
       },
     ],
   },

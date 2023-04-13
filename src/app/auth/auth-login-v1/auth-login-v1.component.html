@@ -1,6 +1,6 @@
 <div class="auth-wrapper auth-v1 px-2">
   <div class="auth-inner py-2">
-    <!-- Register v1 -->
+    <!-- Login v1 -->
     <div class="card mb-0">
       <div class="card-body">
         <a href="javascript:void(0);" class="brand-logo">
@@ -8,35 +8,20 @@
           <h2 class="brand-text text-primary ml-1">Vuexy</h2>
         </a>
 
-        <h4 class="card-title mb-1">Adventure starts here 🚀</h4>
-        <p class="card-text mb-2">Make your app management easy and fun!</p>
+        <h4 class="card-title mb-1">Welcome to Vuexy! 👋</h4>
+        <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
 
-        <form class="auth-register-form mt-2" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <form class="auth-login-form mt-2" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="register-username" class="form-label">Username</label>
-            <input
-              type="text"
-              formControlName="username"
-              class="form-control"
-              placeholder="johndoe"
-              aria-describedby="register-username"
-              tabindex="1"
-              autofocus
-              [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
-            />
-            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-              <div *ngIf="f.username.errors.required">Username is required</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="register-email" class="form-label">Email</label>
+            <label for="login-email" class="form-label">Email</label>
             <input
               type="text"
               formControlName="email"
               class="form-control"
               placeholder="john@example.com"
-              aria-describedby="register-email"
-              tabindex="2"
+              aria-describedby="login-email"
+              tabindex="1"
+              autofocus
               [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
             />
             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -46,18 +31,23 @@
           </div>
 
           <div class="form-group">
-            <label for="register-password" class="form-label">Password</label>
-
+            <div class="d-flex justify-content-between">
+              <label for="login-password">Password</label>
+              <a routerLink="/auth/forgot-password-v1">
+                <small>Forgot Password?</small>
+              </a>
+            </div>
             <div class="input-group input-group-merge form-password-toggle">
               <input
                 [type]="passwordTextType ? 'text' : 'password'"
                 formControlName="password"
                 class="form-control form-control-merge"
-                placeholder="············"
-                aria-describedby="register-password"
-                tabindex="3"
+                tabindex="2"
+                placeholder="·········"
+                aria-describedby="login-password"
                 [ngClass]="{ 'is-invalid error': submitted && f.password.errors }"
               />
+
               <div class="input-group-append">
                 <span class="input-group-text cursor-pointer"
                   ><i
@@ -81,19 +71,17 @@
           </div>
           <div class="form-group">
             <div class="custom-control custom-checkbox">
-              <input class="custom-control-input" type="checkbox" id="register-privacy-policy" tabindex="4" />
-              <label class="custom-control-label" for="register-privacy-policy">
-                I agree to <a href="javascript:void(0);">privacy policy & terms</a>
-              </label>
+              <input class="custom-control-input" type="checkbox" id="remember-me" tabindex="3" />
+              <label class="custom-control-label" for="remember-me"> Remember Me </label>
             </div>
           </div>
-          <button class="btn btn-primary btn-block" tabindex="5" rippleEffect>Sign up</button>
+          <button class="btn btn-primary btn-block" tabindex="4" rippleEffect>Sign in</button>
         </form>
 
         <p class="text-center mt-2">
-          <span>Already have an account? </span>
-          <a routerLink="/pages/authentication/login-v1">
-            <span> Sign in instead</span>
+          <span>New on our platform?</span>
+          <a routerLink="/auth/register-v1">
+            <span>&nbsp;Create an account</span>
           </a>
         </p>
 
@@ -117,6 +105,6 @@
         </div>
       </div>
     </div>
-    <!-- /Register v1 -->
+    <!-- /Login v1 -->
   </div>
 </div>
