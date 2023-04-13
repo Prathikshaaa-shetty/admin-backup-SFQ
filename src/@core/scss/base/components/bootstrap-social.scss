@@ -65,9 +65,7 @@ $bs-height-xs: (floor($font-size-sm * 0.2) + $input-btn-padding-y-lg) !default;
 .btn-dropbox {
   @include btn-social(#1087dd);
 }
-.btn-facebook {
-  @include btn-social(#3b5998);
-}
+
 .btn-flickr {
   @include btn-social(#ff0084);
 }
