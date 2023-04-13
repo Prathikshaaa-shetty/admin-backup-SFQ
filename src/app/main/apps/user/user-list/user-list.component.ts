@@ -9,6 +9,8 @@ import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.s
 
 import { UserListService } from 'app/main/apps/user/user-list/user-list.service';
 
+import { ManagementService } from '../../services/management.service';
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -26,27 +28,10 @@ export class UserListComponent implements OnInit {
   public previousPlanFilter = '';
   public previousStatusFilter = '';
 
-  public selectRole: any = [
-    { name: 'All', value: '' },
-    { name: 'Admin', value: 'Admin' },
-    { name: 'Author', value: 'Author' },
-    { name: 'Editor', value: 'Editor' },
-    { name: 'Maintainer', value: 'Maintainer' },
-    { name: 'Subscriber', value: 'Subscriber' }
-  ];
-
-  public selectPlan: any = [
-    { name: 'All', value: '' },
-    { name: 'Basic', value: 'Basic' },
-    { name: 'Company', value: 'Company' },
-    { name: 'Enterprise', value: 'Enterprise' },
-    { name: 'Team', value: 'Team' }
-  ];
-
   public selectStatus: any = [
-    { name: 'All', value: '' },
-    { name: 'Active', value: 'Active' },
-    { name: 'Inactive', value: 'Inactive' }
+    { name: 'All', value: 'all' },
+    { name: 'Active', value: 'true' },
+    { name: 'Inactive', value: 'false' }
   ];
 
   public selectedRole = [];
@@ -71,7 +56,8 @@ export class UserListComponent implements OnInit {
   constructor(
     private _userListService: UserListService,
     private _coreSidebarService: CoreSidebarService,
-    private _coreConfigService: CoreConfigService
+    private _coreConfigService: CoreConfigService,
+    private _managementService: ManagementService
   ) {
     this._unsubscribeAll = new Subject();
   }
@@ -86,15 +72,13 @@ export class UserListComponent implements OnInit {
    */
   filterUpdate(event) {
     // Reset ng-select on search
-    this.selectedRole = this.selectRole[0];
-    this.selectedPlan = this.selectPlan[0];
     this.selectedStatus = this.selectStatus[0];
 
     const val = event.target.value.toLowerCase();
 
     // Filter Our Data
     const temp = this.tempData.filter(function (d) {
-      return d.fullName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.firstName.toLowerCase().indexOf(val) !== -1 || d.lastName.toLowerCase().indexOf(val) !== -1 || d.email.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
     // Update The Rows
@@ -117,24 +101,24 @@ export class UserListComponent implements OnInit {
    *
    * @param event
    */
-  filterByRole(event) {
-    const filter = event ? event.value : '';
-    this.previousRoleFilter = filter;
-    this.temp = this.filterRows(filter, this.previousPlanFilter, this.previousStatusFilter);
-    this.rows = this.temp;
-  }
+  // filterByRole(event) {
+  //   const filter = event ? event.value : '';
+  //   this.previousRoleFilter = filter;
+  //   this.temp = this.filterRows(filter, this.previousPlanFilter, this.previousStatusFilter);
+  //   this.rows = this.temp;
+  // }
 
   /**
    * Filter By Plan
    *
    * @param event
    */
-  filterByPlan(event) {
-    const filter = event ? event.value : '';
-    this.previousPlanFilter = filter;
-    this.temp = this.filterRows(this.previousRoleFilter, filter, this.previousStatusFilter);
-    this.rows = this.temp;
-  }
+  // filterByPlan(event) {
+  //   const filter = event ? event.value : '';
+  //   this.previousPlanFilter = filter;
+  //   this.temp = this.filterRows(this.previousRoleFilter, filter, this.previousStatusFilter);
+  //   this.rows = this.temp;
+  // }
 
   /**
    * Filter By Status
@@ -143,8 +127,7 @@ export class UserListComponent implements OnInit {
    */
   filterByStatus(event) {
     const filter = event ? event.value : '';
-    this.previousStatusFilter = filter;
-    this.temp = this.filterRows(this.previousRoleFilter, this.previousPlanFilter, filter);
+    this.temp = this.filterRows(filter);
     this.rows = this.temp;
   }
 
@@ -155,20 +138,22 @@ export class UserListComponent implements OnInit {
    * @param planFilter
    * @param statusFilter
    */
-  filterRows(roleFilter, planFilter, statusFilter): any[] {
+  filterRows(statusFilter): any[] {
     // Reset search on select change
     this.searchValue = '';
+    if(statusFilter=='all' || statusFilter==''){
+      return this.tempData;
+    }
+    else if(statusFilter=='true'){
+      return this.tempData.filter(row => row.isActive == true);
+    }else if(statusFilter=='false'){
+      return this.tempData.filter(row => row.isActive == false);
+    }
 
-    roleFilter = roleFilter.toLowerCase();
-    planFilter = planFilter.toLowerCase();
-    statusFilter = statusFilter.toLowerCase();
-
-    return this.tempData.filter(row => {
-      const isPartialNameMatch = row.role.toLowerCase().indexOf(roleFilter) !== -1 || !roleFilter;
-      const isPartialGenderMatch = row.currentPlan.toLowerCase().indexOf(planFilter) !== -1 || !planFilter;
-      const isPartialStatusMatch = row.status.toLowerCase().indexOf(statusFilter) !== -1 || !statusFilter;
-      return isPartialNameMatch && isPartialGenderMatch && isPartialStatusMatch;
-    });
+    // return this.tempData.filter(row => {
+    //    isPartialStatusMatch = row.isActive;
+    //   return isPartialStatusMatch;
+    // });
   }
 
   // Lifecycle Hooks
@@ -182,13 +167,14 @@ export class UserListComponent implements OnInit {
       //! If we have zoomIn route Transition then load datatable after 450ms(Transition will finish in 400ms)
       if (config.layout.animation === 'zoomIn') {
         setTimeout(() => {
-          this._userListService.onUserListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+          // this._userListService.onUserListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+          this._managementService.getUserList().then((response:any)=>{
             this.rows = response;
             this.tempData = this.rows;
           });
         }, 450);
       } else {
-        this._userListService.onUserListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+        this._managementService.getUserList().then((response:any)=>{
           this.rows = response;
           this.tempData = this.rows;
         });

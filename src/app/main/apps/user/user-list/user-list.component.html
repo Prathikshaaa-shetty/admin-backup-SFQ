@@ -41,8 +41,8 @@
         </div>
         <ngx-datatable [rows]="rows" [rowHeight]="50" class="bootstrap core-bootstrap" [limit]="selectedOption"
           [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" [scrollbarH]="true">
-          <ngx-datatable-column name="First Name" prop="fullName" [width]="200">
-            <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+          <ngx-datatable-column name="First Name" [width]="200">
+            <ng-template let-row="row" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <!-- <div *ngIf="row.avatar.length > 0; else customAvatar">
                   <img class="rounded-circle mr-1" src="{{ row.avatar }}" height="32" width="32"
@@ -53,19 +53,19 @@
                       'bg-light-success': row.status == 'active',
                       'bg-light-secondary': row.status == 'inactive'
                     }">
-                    <div class="avatar-content">{{ name | initials }}</div>
+                    <div class="avatar-content">{{ row.firstName | initials }}</div>
                   </div>
                 </ng-template>
                 <div class="cell-line-height">
                   <a routerLink="/apps/user/user-view/{{ row.id }}" class="font-medium-1 d-block"><span
-                      class="font-weight-bold">{{ name }}</span></a>
-                  <span class="text-muted font-small-2"> @{{ row.username }}</span>
+                      class="font-weight-bold">{{ row.firstName }}</span></a>
+                  <!-- <span class="text-muted font-small-2"> @{{ row.firstName }}</span> -->
                 </div>
               </div>
             </ng-template>
           </ngx-datatable-column>
-          <ngx-datatable-column name="Last Name" prop="fullName" [width]="200">
-            <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+          <ngx-datatable-column name="Last Name" [width]="200">
+            <ng-template let-row="row" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <!-- <div *ngIf="row.avatar.length > 0; else customAvatar">
                   <img class="rounded-circle mr-1" src="{{ row.avatar }}" height="32" width="32"
@@ -76,20 +76,20 @@
                       'bg-light-success': row.status == 'active',
                       'bg-light-secondary': row.status == 'inactive'
                     }">
-                    <div class="avatar-content">{{ name | initials }}</div>
+                    <div class="avatar-content">{{ row.lastName | initials }}</div>
                   </div>
                 </ng-template>
                 <div class="cell-line-height">
                   <a routerLink="/apps/user/user-view/{{ row.id }}" class="font-medium-1 d-block"><span
-                      class="font-weight-bold">{{ name }}</span></a>
-                  <span class="text-muted font-small-2"> @{{ row.username }}</span>
+                      class="font-weight-bold">{{ row.lastName }}</span></a>
+                  <!-- <span class="text-muted font-small-2"> @{{ row.lastName }}</span> -->
                 </div>
               </div>
             </ng-template>
           </ngx-datatable-column>
           <ngx-datatable-column name="Email Address" prop="email" [width]="200"></ngx-datatable-column>
 
-          <ngx-datatable-column name="Status" prop="status" [width]="50">
+          <!-- <ngx-datatable-column name="Status" prop="status" [width]="50">
             <ng-template let-status="value" ngx-datatable-cell-template>
               <div class="badge badge-pill" [ngClass]="{
                   'badge-light-success': status == 'active',
@@ -99,9 +99,18 @@
                 {{ status }}
               </div>
             </ng-template>
+          </ngx-datatable-column> -->
+          <ngx-datatable-column name="Phone number" prop="mobileNo" [width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Created Date" [width]="200">
+            <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+              <div class="d-flex align-items-center">
+                <div class="cell-line-height">
+                  <span class="font-weight-bold">{{ row.createdOn.split('T')[0] }}</span>
+                  <!-- <span class="text-muted font-small-2"> @{{ row.lastName }}</span> -->
+                </div>
+              </div>
+            </ng-template>
           </ngx-datatable-column>
-          <ngx-datatable-column name="Phone number" prop="contact" [width]="200"></ngx-datatable-column>
-          <ngx-datatable-column name="Created Date" prop="date" [width]="200"></ngx-datatable-column>
         </ngx-datatable>
         <div class="row">
           <div class="col-md-6 col-12">
