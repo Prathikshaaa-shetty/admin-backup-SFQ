@@ -1,51 +1,33 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
-import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from "environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class FoodSupplierService {
   public rows: any;
-  public onUserListChanged: BehaviorSubject<any>;
+
+  readonly apiUrl: string = environment.apiUrl;
 
   /**
    * Constructor
    *
    * @param {HttpClient} _httpClient
    */
-  constructor(private _httpClient: HttpClient) {
-    // Set the defaults
-    this.onUserListChanged = new BehaviorSubject({});
-  }
+  constructor(private _httpClient: HttpClient) { }
 
-  /**
-   * Resolver
-   *
-   * @param {ActivatedRouteSnapshot} route
-   * @param {RouterStateSnapshot} state
-   * @returns {Observable<any> | Promise<any> | any}
-   */
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-    return new Promise<void>((resolve, reject) => {
-      Promise.all([this.getDataTableRows()]).then(() => {
-        resolve();
-      }, reject);
-    });
-  }
-
-  /**
-   * Get rows
-   */
-  getDataTableRows(): Promise<any[]> {
+  getSupplierList(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get('api/users-data').subscribe((response: any) => {
-        this.rows = response;
-        this.onUserListChanged.next(this.rows);
-        resolve(this.rows);
-      }, reject);
+      this._httpClient.get(this.apiUrl + "GetUserDetails").subscribe({
+        next: (data) => {
+          resolve(data);
+        },
+        error: (err) => {
+          reject(err);
+        },
+      });
     });
   }
 }
