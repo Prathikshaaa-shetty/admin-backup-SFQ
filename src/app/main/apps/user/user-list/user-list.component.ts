@@ -8,6 +8,7 @@ import { CoreConfigService } from "@core/services/config.service";
 import { CoreSidebarService } from "@core/components/core-sidebar/core-sidebar.service";
 
 import { UserListService } from "./user-list.service";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: "app-user-list",
@@ -135,18 +136,42 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  deleteUser(id) {
-    this._userService.deleteUser(id).then((response: any) => {
-      if (response.statusCode == 200) {
-        this.getUserList();
-      }
-    });
-  }
-
   onExport() {
     console.log("Export");
   }
 
+  deleteUser(id){
+    Swal.fire({
+      title: 'Are you sure want to delete?',
+      text: 'You will not be able to recover this file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        this._userService.deleteUser(id).then((response: any) => {
+          if (response.statusCode == 200) {
+            this.getUserList();
+            Swal.fire(
+              'Deleted!',
+              'success'
+            )
+          }
+          else {
+            Swal.fire(
+              'User Not Deleted!',
+              'error'
+            )
+          }
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+        )
+      }
+    })
+  }
   /**
    * On destroy
    */

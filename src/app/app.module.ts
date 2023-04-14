@@ -26,6 +26,7 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { AuthenticationModule } from './auth/authentication.module';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 const appRoutes: Routes = [
@@ -91,6 +92,7 @@ const appRoutes: Routes = [
     LayoutModule,
     ContentHeaderModule,
     AuthenticationModule,
+    SweetAlert2Module.forRoot()
   ],
 
   providers: [

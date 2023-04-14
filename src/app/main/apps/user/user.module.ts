@@ -15,6 +15,7 @@ import { CoreSidebarModule } from "@core/components";
 
 import { UserListComponent } from "app/main/apps/user/user-list/user-list.component";
 import { UserListService } from "app/main/apps/user/user-list/user-list.service";
+import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 
 // routing
 const routes: Routes = [
@@ -28,7 +29,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [UserListComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), CoreCommonModule, FormsModule, NgbModule, NgSelectModule, Ng2FlatpickrModule, NgxDatatableModule, CorePipesModule, CoreDirectivesModule, CoreSidebarModule],
+  imports: [CommonModule, RouterModule.forChild(routes), CoreCommonModule, FormsModule, NgbModule, NgSelectModule, Ng2FlatpickrModule, NgxDatatableModule, CorePipesModule, CoreDirectivesModule, CoreSidebarModule,SweetAlert2Module],
   providers: [UserListService],
 })
 export class UserModule { }
