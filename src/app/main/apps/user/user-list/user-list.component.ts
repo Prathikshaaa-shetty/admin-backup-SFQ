@@ -141,12 +141,12 @@ export class UserListComponent implements OnInit {
   filterRows(statusFilter): any[] {
     // Reset search on select change
     this.searchValue = '';
-    if(statusFilter=='all' || statusFilter==''){
+    if (statusFilter == 'all' || statusFilter == '') {
       return this.tempData;
     }
-    else if(statusFilter=='true'){
+    else if (statusFilter == 'true') {
       return this.tempData.filter(row => row.isActive == true);
-    }else if(statusFilter=='false'){
+    } else if (statusFilter == 'false') {
       return this.tempData.filter(row => row.isActive == false);
     }
 
@@ -168,18 +168,22 @@ export class UserListComponent implements OnInit {
       if (config.layout.animation === 'zoomIn') {
         setTimeout(() => {
           // this._userListService.onUserListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
-          this._managementService.getUserList().then((response:any)=>{
+          this._managementService.getUserList().then((response: any) => {
             this.rows = response;
             this.tempData = this.rows;
           });
         }, 450);
       } else {
-        this._managementService.getUserList().then((response:any)=>{
+        this._managementService.getUserList().then((response: any) => {
           this.rows = response;
           this.tempData = this.rows;
         });
       }
     });
+  }
+
+  onExport() {
+    console.log("export")
   }
 
   /**
