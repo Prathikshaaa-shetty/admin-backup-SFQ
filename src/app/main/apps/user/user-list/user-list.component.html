@@ -1,9 +1,6 @@
 <div class="content-wrapper container-xxl p-0">
   <div class="content-body">
-    <!-- User List -->
     <section class="users-list-wrapper">
-      <!-- users filter end -->
-
       <div class="card">
         <div class="card-body">
           <h1 style="padding-bottom: 20px !important">User Management</h1>
@@ -58,7 +55,6 @@
           </ngx-datatable-column>
           <ngx-datatable-column name="Email Address" prop="email" [width]="250"></ngx-datatable-column>
 
-
           <ngx-datatable-column name="Phone number" prop="mobileNo" [width]="150"></ngx-datatable-column>
           <ngx-datatable-column name="Created Date" [width]="120">
             <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
@@ -87,12 +83,10 @@
                     <input class="custom-control-input" type="checkbox" [checked]="" />
                     <label class="custom-control-label" for="systemNotification"></label>
                   </div>
-
                 </div>
               </div>
             </ng-template>
           </ngx-datatable-column>
-
 
           <ngx-datatable-column name="Actions" [width]="100" [sortable]="false">
             <ng-template ngx-datatable-cell-template let-row="row">
@@ -121,11 +115,5 @@
         </div>
       </div>
     </section>
-    <!--/ User List -->
   </div>
-
-  <!-- New User Sidebar -->
-  <core-sidebar class="modal modal-slide-in sidebar-todo-modal fade" name="new-user-sidebar"
-    overlayClass="modal-backdrop"> </core-sidebar>
-  <!--/ New User Sidebar -->
 </div>
