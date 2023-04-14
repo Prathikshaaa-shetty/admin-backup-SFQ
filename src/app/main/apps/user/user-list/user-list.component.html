@@ -80,8 +80,8 @@
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
                   <div class="custom-control custom-control-primary custom-switch">
-                    <input class="custom-control-input" type="checkbox" [checked]="" />
-                    <label class="custom-control-label" for="systemNotification"></label>
+                    <input class="custom-control-input" type="checkbox" [id]="row.id" [checked]="" />
+                    <label class="custom-control-label" [htmlFor]="row.id"></label>
                   </div>
                 </div>
               </div>
@@ -90,8 +90,9 @@
 
           <ngx-datatable-column name="Actions" [width]="100" [sortable]="false">
             <ng-template ngx-datatable-cell-template let-row="row">
-              <div ngbDropdown container="body">
-                <button ngbDropdownToggle type="button" class="btn icon-btn btn-sm hide-arrow" rippleEffect>
+              <div container="body">
+                <button type="button" class="btn icon-btn btn-sm hide-arrow" rippleEffect 
+                (click)="deleteUser(row.id)">
                   <span [data-feather]="'trash'" [class]="'cursor-pointer'"></span>
                 </button>
               </div>

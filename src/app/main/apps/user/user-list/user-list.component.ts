@@ -50,7 +50,8 @@ export class UserListComponent implements OnInit {
    *
    * @param {CoreSidebarService} _coreSidebarService
    */
-  constructor(private _coreSidebarService: CoreSidebarService, private _coreConfigService: CoreConfigService, private _userService: UserListService) {
+  constructor(private _coreSidebarService: CoreSidebarService, private _coreConfigService: CoreConfigService, 
+    private _userService: UserListService) {
     this._unsubscribeAll = new Subject();
   }
 
@@ -131,6 +132,14 @@ export class UserListComponent implements OnInit {
     this._userService.getUserList().then((response: any) => {
       this.rows = response.data;
       this.tempData = this.rows;
+    });
+  }
+
+  deleteUser(id) {
+    this._userService.deleteUser(id).then((response: any) => {
+      if (response.statusCode == 200) {
+        this.getUserList();
+      }
     });
   }
 

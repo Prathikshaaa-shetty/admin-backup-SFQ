@@ -90,7 +90,7 @@ const appRoutes: Routes = [
     CardSnippetModule,
     LayoutModule,
     ContentHeaderModule,
-    AuthenticationModule
+    AuthenticationModule,
   ],
 
   providers: [

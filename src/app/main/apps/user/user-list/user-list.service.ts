@@ -29,4 +29,17 @@ export class UserListService {
       });
     });
   }
+
+  deleteUser(id: number): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this._httpClient.post(this.apiUrl + "DeleteUser/"+id , id).subscribe({
+        next: (data) => {
+          resolve(data);
+        },
+        error: (err) => {
+          reject(err);
+        },
+      });
+    });
+  }
 }
