@@ -2,36 +2,33 @@
   <div class="content-body">
     <!-- User List -->
     <section class="users-list-wrapper">
-
       <!-- users filter end -->
 
       <div class="card">
         <div class="card-body">
-          <h1 style="padding-bottom: 20px !important;">User Management</h1>
+          <h1 style="padding-bottom: 20px !important">User Management</h1>
           <div class="users-list-filter">
             <form>
               <div class="row">
-
                 <div class="col-12 col-md-2">
-                  <div class="d-flex  pr-1 pb-1 pb-md-0">
+                  <div class="d-flex pr-1 pb-1 pb-md-0">
                     <label class="d-flex align-items-center ml-1 ml-md-0"><input [(ngModel)]="searchValue"
                         placeholder="Search" name="searchValue" type="search" class="form-control ml-25"
                         (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" /></label>
                   </div>
-
                 </div>
                 <div class="col-12 col-md-6">
-                  <div class="d-flex  pr-1 pb-1 pb-md-0">
+                  <div class="d-flex pr-1 pb-1 pb-md-0">
                     <fieldset class="form-group">
                       <ng-select [items]="selectStatus" [(ngModel)]="selectedStatus" name="selectedStatus"
                         bindLabel="name" placeholder="Status" (change)="filterByStatus($event)"></ng-select>
                     </fieldset>
                   </div>
                 </div>
-                <!-- <div class="col-12 col-md-4"></div> -->
-                <div class="col-12 col-md-4" style="display:flex; justify-content: flex-end;">
+
+                <div class="col-12 col-md-4" style="display: flex; justify-content: flex-end">
                   <button class="btn btn-primary ml-1" rippleEffect (click)="toggleSidebar('new-user-sidebar')"
-                    style="height: 40px !important;  "><i data-feather="plus"
+                    style="height: 40px !important"><i data-feather="plus"
                       class="d-sm-none d-inline-block mr-0 mr-sm-1"></i><span
                       class="d-none d-sm-inline-block">Export</span></button>
                 </div>
@@ -44,22 +41,8 @@
           <ngx-datatable-column name="First Name" [width]="200">
             <ng-template let-row="row" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
-                <!-- <div *ngIf="row.avatar.length > 0; else customAvatar">
-                  <img class="rounded-circle mr-1" src="{{ row.avatar }}" height="32" width="32"
-                    alt="datatable-avatar" />
-                </div> -->
-                <ng-template #customAvatar>
-                  <div class="avatar mr-1 ml-0" [ngClass]="{
-                      'bg-light-success': row.status == 'active',
-                      'bg-light-secondary': row.status == 'inactive'
-                    }">
-                    <div class="avatar-content">{{ row.firstName | initials }}</div>
-                  </div>
-                </ng-template>
                 <div class="cell-line-height">
-                  <a routerLink="/apps/user/user-view/{{ row.id }}" class="font-medium-1 d-block"><span
-                      class="font-weight-bold">{{ row.firstName }}</span></a>
-                  <!-- <span class="text-muted font-small-2"> @{{ row.firstName }}</span> -->
+                  <a class="font-medium-1 d-block"><span class="font-weight-bold">{{ row.firstName }}</span></a>
                 </div>
               </div>
             </ng-template>
@@ -67,22 +50,8 @@
           <ngx-datatable-column name="Last Name" [width]="200">
             <ng-template let-row="row" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
-                <!-- <div *ngIf="row.avatar.length > 0; else customAvatar">
-                  <img class="rounded-circle mr-1" src="{{ row.avatar }}" height="32" width="32"
-                    alt="datatable-avatar" />
-                </div> -->
-                <ng-template #customAvatar>
-                  <div class="avatar mr-1 ml-0" [ngClass]="{
-                      'bg-light-success': row.status == 'active',
-                      'bg-light-secondary': row.status == 'inactive'
-                    }">
-                    <div class="avatar-content">{{ row.lastName | initials }}</div>
-                  </div>
-                </ng-template>
                 <div class="cell-line-height">
-                  <a routerLink="/apps/user/user-view/{{ row.id }}" class="font-medium-1 d-block"><span
-                      class="font-weight-bold">{{ row.lastName }}</span></a>
-                  <!-- <span class="text-muted font-small-2"> @{{ row.lastName }}</span> -->
+                  <a class="font-medium-1 d-block"><span class="font-weight-bold">{{ row.lastName }}</span></a>
                 </div>
               </div>
             </ng-template>
@@ -105,9 +74,17 @@
             <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span class="font-weight-bold">{{ row.createdOn.split('T')[0] }}</span>
-                  <!-- <span class="text-muted font-small-2"> @{{ row.lastName }}</span> -->
+                  <span class="font-weight-bold">{{ row.createdOn.split("T")[0] }}</span>
                 </div>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Actions" [width]="40" [sortable]="false">
+            <ng-template ngx-datatable-cell-template let-row="row">
+              <div ngbDropdown container="body">
+                <button ngbDropdownToggle type="button" class="btn icon-btn btn-sm hide-arrow" rippleEffect>
+                  <span [data-feather]="'trash'" [class]="'cursor-pointer'"></span>
+                </button>
               </div>
             </ng-template>
           </ngx-datatable-column>
@@ -125,9 +102,7 @@
               </label>
             </div>
           </div>
-          <div class="col-md-6 col-12 d-flex justify-content-start justify-content-md-end">
-
-          </div>
+          <div class="col-md-6 col-12 d-flex justify-content-start justify-content-md-end"></div>
         </div>
       </div>
     </section>
@@ -136,8 +111,6 @@
 
   <!-- New User Sidebar -->
   <core-sidebar class="modal modal-slide-in sidebar-todo-modal fade" name="new-user-sidebar"
-    overlayClass="modal-backdrop">
-
-  </core-sidebar>
+    overlayClass="modal-backdrop"> </core-sidebar>
   <!--/ New User Sidebar -->
 </div>
