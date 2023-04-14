@@ -169,13 +169,13 @@ export class UserListComponent implements OnInit {
         setTimeout(() => {
           // this._userListService.onUserListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
           this._managementService.getUserList().then((response: any) => {
-            this.rows = response;
+            this.rows = response.data;
             this.tempData = this.rows;
           });
         }, 450);
       } else {
         this._managementService.getUserList().then((response: any) => {
-          this.rows = response;
+          this.rows = response.data;
           this.tempData = this.rows;
         });
       }
@@ -183,7 +183,7 @@ export class UserListComponent implements OnInit {
   }
 
   onExport() {
-    console.log("export")
+    console.log("Export")
   }
 
   /**
