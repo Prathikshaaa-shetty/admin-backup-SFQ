@@ -22,9 +22,7 @@ const routes: Routes = [
   {
     path: 'food-supplier',
     component: FoodSupplierComponent,
-    resolve: {
-      uls: FoodSupplierService
-    },
+
     data: { animation: 'FoodSupplierComponent' }
   },
 
