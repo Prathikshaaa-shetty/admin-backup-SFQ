@@ -167,18 +167,18 @@ export class UserListComponent implements OnInit {
       //! If we have zoomIn route Transition then load datatable after 450ms(Transition will finish in 400ms)
       if (config.layout.animation === 'zoomIn') {
         setTimeout(() => {
-          // this._userListService.onUserListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
-          this._managementService.getUserList().then((response:any)=>{
-            this.rows = response;
-            this.tempData = this.rows;
-          });
+            this.getUserList()
         }, 450);
       } else {
-        this._managementService.getUserList().then((response:any)=>{
-          this.rows = response;
-          this.tempData = this.rows;
-        });
+        this.getUserList()
       }
+    });
+  }
+
+  getUserList(){
+    this._managementService.getUserList().then((response:any)=>{
+      this.rows = response.data;
+      this.tempData = this.rows;
     });
   }
 
