@@ -1,26 +1,22 @@
 <div class="auth-wrapper auth-v2">
-  <div class="auth-inner row m-0" style="padding: unset;">
+  <div class="auth-inner row m-0" style="padding: unset">
     <!-- Left Text-->
-    <div class="col-lg-5 login-bg-div w-100 d-lg-flex" style="padding: unset !important;" >
+    <div class="col-lg-5 login-bg-div w-100 d-lg-flex" style="padding: unset !important">
       <div class="w-100 d-lg-flex">
-          <img class="login-bg-logo" src="assets/images/img/logo-white.png"
-          alt="Logo V2" />
-          <div class="left-box">
-            <h1 style="color: white;">Connecting like never before</h1>
-            <p>
-              Introducing a way to connect with a wide range of food suppliers, manufacturers, and distributors all over
-              the world,
-              without ever leaving your home or office.
-            </p>
-          </div>
+        <img class="login-bg-logo" src="assets/images/img/logo-white.png" alt="Logo V2" />
+        <div class="left-box">
+          <h1 style="color: white">Connecting like never before</h1>
+          <p>Introducing a way to connect with a wide range of food suppliers, manufacturers, and distributors all over
+            the world, without ever leaving your home or office.</p>
+        </div>
       </div>
     </div>
     <!-- Login-->
     <div class="d-flex col-lg-7 align-items-center auth-bg px-2 p-lg-5">
       <div class="col-12 col-sm-8 col-md-6 col-lg-8">
-        <h2 class="card-title ">Login to your account</h2>
+        <h2 class="card-title">Login to your account</h2>
         <p class="card-text">Please enter your credentials to login</p>
-<hr/>
+        <hr />
         <ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="error">
           <div class="alert-body">
             <p>{{ error }}</p>
@@ -64,10 +60,10 @@
               <input class="custom-control-input" id="remember-me" type="checkbox" tabindex="3" />
               <label class="custom-control-label" for="remember-me"> Remember Me</label>
             </div>
-            <div >
+            <!-- <div >
               <a routerLink="/auth/forgot-password"><small>Forgot
                   Password?</small></a>
-            </div>
+            </div> -->
           </div>
           <button [disabled]="loading" class="btn btn-primary btn-block" tabindex="4" rippleEffect><span *ngIf="loading"
               class="spinner-border spinner-border-sm mr-1"></span>Log in</button>

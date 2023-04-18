@@ -54,6 +54,7 @@ export class AnalyticsComponent implements OnInit {
    *
    */
   constructor(
+
     private _userService: UserService,
     private _dashboardService: DashboardService,
     private _coreConfigService: CoreConfigService
@@ -292,6 +293,7 @@ export class AnalyticsComponent implements OnInit {
    * On init
    */
   ngOnInit(): void {
+
     // get the currentUser details from localStorage
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -299,39 +301,39 @@ export class AnalyticsComponent implements OnInit {
      * Get the secure api service (based on user role) (Admin Only secure API)
      * For example purpose
      */
-    this.loading = true;
-    this._userService
-      .getAll()
-      .pipe(first())
-      .subscribe(users => {
-        this.loading = false;
-        this.users = users;
-      });
+    // this.loading = true;
+    // this._userService
+    //   .getAll()
+    //   .pipe(first())
+    //   .subscribe(users => {
+    //     this.loading = false;
+    //     this.users = users;
+    //   });
 
     // Get the dashboard service data
-    this._dashboardService.onApiDataChanged.subscribe(response => {
-      this.data = response;
-    });
+    // this._dashboardService.onApiDataChanged.subscribe(response => {
+    //   this.data = response;
+    // });
   }
 
   /**
    * After View Init
    */
-  ngAfterViewInit() {
-    // Subscribe to core config changes
-    this._coreConfigService.getConfig().subscribe(config => {
-      // If Menu Collapsed Changes
-      if (config.layout.menu.collapsed === true || config.layout.menu.collapsed === false) {
-        setTimeout(() => {
-          // Get Dynamic Width for Charts
-          this.isMenuToggled = false;
-          this.gainedChartoptions.chart.width = this.gainedChartRef?.nativeElement.offsetWidth;
-          this.orderChartoptions.chart.width = this.orderChartRef?.nativeElement.offsetWidth;
-          this.avgsessionChartoptions.chart.width = this.avgSessionChartRef?.nativeElement.offsetWidth;
-          this.supportChartoptions.chart.width = this.supportChartRef?.nativeElement.offsetWidth;
-          this.salesChartoptions.chart.width = this.salesChartRef?.nativeElement.offsetWidth;
-        }, 1000);
-      }
-    });
-  }
+  // ngAfterViewInit() {
+
+  //   this._coreConfigService.getConfig().subscribe(config => {
+
+  //     if (config.layout.menu.collapsed === true || config.layout.menu.collapsed === false) {
+  //       setTimeout(() => {
+
+  //         this.isMenuToggled = false;
+  //         this.gainedChartoptions.chart.width = this.gainedChartRef?.nativeElement.offsetWidth;
+  //         this.orderChartoptions.chart.width = this.orderChartRef?.nativeElement.offsetWidth;
+  //         this.avgsessionChartoptions.chart.width = this.avgSessionChartRef?.nativeElement.offsetWidth;
+  //         this.supportChartoptions.chart.width = this.supportChartRef?.nativeElement.offsetWidth;
+  //         this.salesChartoptions.chart.width = this.salesChartRef?.nativeElement.offsetWidth;
+  //       }, 1000);
+  //     }
+  //   });
+  // }
 }

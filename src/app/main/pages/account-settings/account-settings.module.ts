@@ -16,9 +16,7 @@ const routes: Routes = [
     path: 'account-settings',
     component: AccountSettingsComponent,
     canActivate: [AuthGuard],
-    resolve: {
-      accountSetting: AccountSettingsService
-    },
+
     data: { animation: 'account-settings' }
   }
 ];
@@ -36,4 +34,4 @@ const routes: Routes = [
 
   providers: [AccountSettingsService]
 })
-export class AccountSettingsModule {}
+export class AccountSettingsModule { }

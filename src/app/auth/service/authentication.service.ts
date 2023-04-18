@@ -52,29 +52,35 @@ export class AuthenticationService {
    * @returns user
    */
   login(email: string, password: string) {
+
     return this._http
-      .post<any>(`${environment.apiUrl}/users/authenticate`, { email, password })
+      .post<any>(`${environment.apiUrl}api/Account/SignIn`, { email, password })
       .pipe(
-        map(user => {
+        map(res => {
+
+          const user = res.data;
+          let currentUser = user;
           // login successful if there's a jwt token in the response
           if (user && user.token) {
+
+            currentUser = { ...user, role: user.roleId, token: user.token.accessToken }
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
             // Display welcome toast!
             setTimeout(() => {
               this._toastrService.success(
                 'You have successfully logged in as an Admin user to Source for Quality.',
-                '👋 Welcome, ' + user.firstName + '!',
+                '👋 Welcome, ' + user.fullName + '!',
                 { toastClass: 'toast ngx-toastr', closeButton: true }
               );
             }, 2500);
 
             // notify
-            this.currentUserSubject.next(user);
+            this.currentUserSubject.next(currentUser);
           }
 
-          return user;
+          return currentUser;
         })
       );
   }

@@ -20,71 +20,96 @@
                     <!-- header media -->
                     <div class="media">
                       <a href="javascript:void(0);" class="mr-25">
-                        <img [src]="avatarImage" class="rounded mr-50" alt="profile image" height="76" width="80" />
+                        <!-- <img [src]="avatarImage" class="rounded mr-50" alt="profile image" height="76" width="80" /> -->
+                        <img src="assets/images/portrait/small/avatar-s-11.jpg" class="rounded mr-50"
+                          alt="profile image" height="76" width="80" />
+
                       </a>
                       <!-- upload and reset button -->
                       <div class="media-body mt-75 ml-1">
                         <button (click)="file.click()" for="account-upload" class="btn btn-sm btn-primary mb-75 mr-75"
-                          rippleEffect>
-                          Upload
-                        </button>
+                          rippleEffect>Upload</button>
                         <input type="file" #file id="account-upload" hidden accept="image/*"
                           (change)="uploadImage($event)" />
                         <button class="btn btn-sm btn-outline-secondary mb-75" rippleEffect>Reset</button>
-                        <p>Allowed JPG, GIF or PNG. Max size of 800kB</p>
                       </div>
                       <!--/ upload and reset button -->
                     </div>
                     <!--/ header media -->
 
                     <!-- form -->
-                    <form class="validate-form mt-2">
+                    <form class="validate-form mt-2" [formGroup]="accountForm">
                       <div class="row">
                         <div class="col-12 col-sm-6">
                           <div class="form-group">
                             <label for="account-username">Firstname</label>
-                            <input type="text" [(ngModel)]="data.accountSetting.general.username" class="form-control"
-                              id="account-username" name="username" placeholder="Firstname" />
+                            <input type="text" class="form-control" id="account-username" name="username"
+                              placeholder="Firstname" formControlName="firstName" />
+
+                            <span *ngIf="firstName?.hasError('required') && (firstName?.dirty || firstName?.touched)"
+                              class="error-span">
+                              Please enter your first name </span>
+                            <span *ngIf="firstName?.hasError('pattern')" class="error-span"> Name can't have numbers or
+                              special characters!
+                            </span>
+                            <span *ngIf="firstName?.hasError('minlength') && !firstName?.hasError('pattern')"
+                              class="error-span"> Name is
+                              too short </span>
+                            <span style="margin: 0px !important" *ngIf="firstName?.value.length + 1 >= 100"
+                              class="error-span"> Only 100
+                              characters are allowed </span>
                           </div>
                         </div>
                         <div class="col-12 col-sm-6">
                           <div class="form-group">
                             <label for="account-name">Lastname</label>
-                            <input type="text" [(ngModel)]="data.accountSetting.general.fullName" class="form-control"
-                              id="account-name" name="name" placeholder="Lastname" />
+                            <input type="text" class="form-control" id="account-name" name="name" placeholder="Lastname"
+                              formControlName="lastName" />
+                            <span *ngIf="lastName?.hasError('required') && (lastName?.dirty || lastName?.touched)"
+                              class="error-span">
+                              Please enter your last name </span>
+                            <span *ngIf="lastName?.hasError('pattern')" class="error-span"> Name can't have numbers or
+                              special characters!
+                            </span>
+                            <span *ngIf="lastName?.hasError('minlength') && !lastName?.hasError('pattern')"
+                              class="error-span"> Name is too
+                              short </span>
+                            <span style="margin: 0px !important" *ngIf="lastName?.value.length + 1 >= 100"
+                              class="error-span"> Only 100
+                              characters are allowed </span>
                           </div>
                         </div>
                         <div class="col-12 col-sm-6">
                           <div class="form-group">
                             <label for="account-e-mail">Your E-mail</label>
-                            <input type="email" [(ngModel)]="data.accountSetting.general.email" class="form-control"
-                              id="account-e-mail" name="email" placeholder="Your Email" />
+                            <input type="email" class="form-control" id="account-e-mail" name="email"
+                              placeholder="Your Email" formControlName="email" />
+                            <span *ngIf="email?.value.length + 1 > 100" class="error-span">Only 100 characters are
+                              allowed</span>
+                            <span *ngIf="email?.hasError('required') && (email?.dirty || email?.touched)"
+                              class="error-span">Email is
+                              required</span>
+                            <span *ngIf="!email?.hasError('required') && email?.hasError('email')"
+                              class="error-span">Please enter valid
+                              email</span>
                           </div>
                         </div>
                         <div class="col-12 col-sm-6">
                           <div class="form-group">
-                            <label for="account-company">Your Phone</label>
-                            <input type="text" [(ngModel)]="data.accountSetting.general.contact" class="form-control"
-                              id="account-company" name="company" placeholder="Your Phone" />
+                            <label for="account-phone">Your Phone</label>
+                            <input type="text" class="form-control" id="account-phone" name="phone"
+                              placeholder="Your Phone" formControlName="phone" />
+                            <span *ngIf="phone?.hasError('required') && (phone?.dirty || phone?.touched)"
+                              class="error-span"> Please enter
+                              phone number </span>
+                            <span *ngIf="phone?.hasError('pattern')" class="error-span"> Please enter correct phone
+                              number </span>
                           </div>
                         </div>
-                        <div class="col-12 col-sm-6">
-                          <div class="form-group">
-                            <label for="account-company">Password</label>
-                            <input type="text" [(ngModel)]="data.accountSetting.general.password" class="form-control"
-                              id="account-company" name="company" placeholder="Password" />
-                          </div>
-                        </div>
-                        <!-- <div class="col-12 mt-75">
-                          <div class="alert alert-warning mb-50" role="alert">
-                            <h4 class="alert-heading">Your email is not confirmed. Please check your inbox.</h4>
-                            <div class="alert-body">
-                              <a href="javascript: void(0);" class="alert-link">Resend confirmation</a>
-                            </div>
-                          </div>
-                        </div> -->
+
                         <div class="col-12">
-                          <button type="submit" class="btn btn-primary mt-2 mr-1" rippleEffect>Save changes</button>
+                          <button type="submit" class="btn btn-primary mt-2 mr-1" rippleEffect (click)="onSubmit()">Save
+                            changes</button>
                           <button type="reset" class="btn btn-outline-secondary mt-2" rippleEffect>Cancel</button>
                         </div>
                       </div>
@@ -165,8 +190,6 @@
                 </div>
               </ng-template>
             </li>
-
-
           </ul>
         </div>
         <div [ngbNavOutlet]="navVertical" class="col-12 col-md-9"></div>

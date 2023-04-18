@@ -1,10 +1,13 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject, of } from 'rxjs';
+import { catchError, takeUntil } from 'rxjs/operators';
 import { FlatpickrOptions } from 'ng2-flatpickr';
 
 import { AccountSettingsService } from 'app/main/pages/account-settings/account-settings.service';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
@@ -22,6 +25,7 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
   public passwordTextTypeNew = false;
   public passwordTextTypeRetype = false;
   public avatarImage: string;
+  public accountForm: FormGroup;
 
   // private
   private _unsubscribeAll: Subject<any>;
@@ -31,9 +35,22 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
    *
    * @param {AccountSettingsService} _accountSettingsService
    */
-  constructor(private _accountSettingsService: AccountSettingsService) {
+  constructor(private _accountSettingsService: AccountSettingsService, private _formBuilder: FormBuilder, private router: Router) {
     this._unsubscribeAll = new Subject();
+    this.accountForm = this._formBuilder.group({
+      firstName: ['', [Validators.required, Validators.maxLength(100)]],
+      lastName: ['', [Validators.required, Validators.maxLength(100)]],
+      phone: ['', Validators.required],
+      email: [
+        '',
+        [Validators.required, Validators.email, Validators.maxLength(100)],
+      ]
+
+    });
   }
+
+
+
 
   // Public Methods
   // -----------------------------------------------------------------------------------------------------
@@ -83,9 +100,22 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit() {
+
+    this._accountSettingsService.getUser().then((res) => {
+      if (res) {
+
+        this.accountForm.patchValue({
+          firstName: res?.data?.firstName,
+          lastName: res?.data?.lastName,
+          email: res?.data?.email,
+          phone: res?.data?.mobileNo,
+
+        })
+      }
+    })
     this._accountSettingsService.onSettingsChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
       this.data = response;
-      this.avatarImage = this.data.accountSetting.general.avatar;
+      // this.avatarImage = this.data.accountSetting.general.avatar;
     });
 
     // content header
@@ -112,6 +142,55 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
         ]
       }
     };
+  }
+
+
+  get firstName(): AbstractControl | null {
+    return this.accountForm.get('firstName');
+  }
+  get lastName(): AbstractControl | null {
+    return this.accountForm.get('lastName');
+  }
+  get phone(): AbstractControl | null {
+    return this.accountForm.get('phone');
+  }
+  get email(): AbstractControl | null {
+    return this.accountForm.get('email');
+  }
+
+  onSubmit() {
+    if (this.accountForm.valid) {
+
+      const data = {
+        id: this._accountSettingsService.user.id,
+        firstName: this.accountForm.value.firstName,
+        lastName: this.accountForm.value.lastName,
+        mobileNo: parseInt(this.accountForm.value.phone),
+        email: this.accountForm.value.email,
+        // password: this.accountForm.value.password,
+        // roleId: 0,
+        // isSubscribed: false,
+      };
+      this._accountSettingsService
+        .updateUser(data).then((res) => {
+          if (res) {
+            if (res.statusCode == '200') {
+              Swal.fire({
+                title: '',
+                text: 'Account updated successfully',
+              })
+            }
+          }
+          else {
+            Swal.fire({
+              title: '',
+              text: res.message,
+            })
+          }
+        });
+    }
+
+
   }
 
   /**
