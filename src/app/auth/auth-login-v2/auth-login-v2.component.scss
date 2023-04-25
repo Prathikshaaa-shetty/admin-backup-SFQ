@@ -69,3 +69,10 @@
   opacity: 0.8;
   margin-bottom: 20px;
 }
+ #disable-btn:disabled {
+  background: #ccc !important;
+}
+
+.swal2-styled.swal2-confirm{
+  background-color: #337c2a;
+}

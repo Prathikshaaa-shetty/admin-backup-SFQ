@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 
 import { AuthenticationService } from 'app/auth/service';
 import { CoreConfigService } from '@core/services/config.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-auth-login-v2',
@@ -84,19 +85,25 @@ export class AuthLoginV2Component implements OnInit {
     }
 
     // Login
-    this.loading = true;
+
     this._authenticationService
       .login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(
 
         data => {
+          if (data.roleName == "Admin") {
+            this._router.navigate([this.returnUrl]);
+          } else {
+            Swal.fire({
+              text: "Invalid Admin Credentials!"
+            })
+          }
 
-          this._router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
-          this.loading = false;
+
         }
       );
   }

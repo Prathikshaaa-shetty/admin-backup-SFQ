@@ -167,7 +167,7 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
         lastName: this.accountForm.value.lastName,
         mobileNo: parseInt(this.accountForm.value.phone),
         email: this.accountForm.value.email,
-        // password: this.accountForm.value.password,
+        password: this.accountForm.value.password,
         // roleId: 0,
         // isSubscribed: false,
       };
