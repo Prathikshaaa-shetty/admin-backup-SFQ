@@ -54,4 +54,17 @@ export class AccountSettingsService {
     });
   }
 
+  changePassword(data: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this._httpClient.post(this.apiUrl + "api/ChangePassword/ChangePassword", data).subscribe({
+        next: (data) => {
+          resolve(data);
+        },
+        error: (err) => {
+          reject(err);
+        },
+      });
+    });
+  }
+
 }

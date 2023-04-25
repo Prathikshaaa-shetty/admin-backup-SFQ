@@ -5,7 +5,14 @@ import { catchError, takeUntil } from 'rxjs/operators';
 import { FlatpickrOptions } from 'ng2-flatpickr';
 
 import { AccountSettingsService } from 'app/main/pages/account-settings/account-settings.service';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 @Component({
@@ -26,6 +33,8 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
   public passwordTextTypeRetype = false;
   public avatarImage: string;
   public accountForm: FormGroup;
+  public changePasswordForm: FormGroup;
+  public changepassEmail: any;
 
   // private
   private _unsubscribeAll: Subject<any>;
@@ -47,6 +56,12 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
       ]
 
     });
+    this.changePasswordForm = this._formBuilder.group({
+      email: [this.changepassEmail],
+      oldPassword: ['', Validators.required],
+      newPassword: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required, confirmPasswordValidator]],
+    })
   }
 
 
@@ -100,7 +115,7 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit() {
-
+    this.getEmail()
     this._accountSettingsService.getUser().then((res) => {
       if (res) {
 
@@ -157,10 +172,17 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
   get email(): AbstractControl | null {
     return this.accountForm.get('email');
   }
-
+  get oldPassword(): AbstractControl | null {
+    return this.changePasswordForm.get('oldPassword');
+  }
+  get newPassword(): AbstractControl| null {
+    return this.changePasswordForm.get('newPassword');
+  }
+  get confirmPassword(): AbstractControl | null {
+    return this.changePasswordForm.get('confirmPassword');
+  }
   onSubmit() {
     if (this.accountForm.valid) {
-
       const data = {
         id: this._accountSettingsService.user.id,
         firstName: this.accountForm.value.firstName,
@@ -168,8 +190,6 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
         mobileNo: parseInt(this.accountForm.value.phone),
         email: this.accountForm.value.email,
         password: this.accountForm.value.password,
-        // roleId: 0,
-        // isSubscribed: false,
       };
       this._accountSettingsService
         .updateUser(data).then((res) => {
@@ -193,6 +213,38 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
 
   }
 
+  changePassword() {
+    const data = {
+      email: this.changepassEmail,
+      oldPassword: this.changePasswordForm.value.oldPassword,
+      newPassword: this.changePasswordForm.value.newPassword,
+      confirmPassword: this.changePasswordForm.value.confirmPassword,
+    };
+    if (this.changePasswordForm.valid) {
+      this._accountSettingsService
+        .changePassword(data).then((res) => {
+          if (res) {
+            if (res.statusCode == '200') {
+              Swal.fire({
+                title: '',
+                text: 'Password updated successfully',
+              })
+            }
+          }
+          else {
+            Swal.fire({
+              title: '',
+              text: res.message,
+            })
+          }
+        });
+    }
+  }
+
+  getEmail() {
+    const data = localStorage.getItem('currentUser');
+    this.changepassEmail = JSON.parse(data || '{}').email;
+  }
   /**
    * On destroy
    */
@@ -202,3 +254,33 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.complete();
   }
 }
+/**
+ * Confirm password validator
+ *
+ * @param {AbstractControl} control
+ * @returns {ValidationErrors | null}
+ */
+export const confirmPasswordValidator: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  if (!control.parent || !control) {
+    return null;
+  }
+
+  const newPassword = control.parent.get('newPassword');
+  const confirmPassword = control.parent.get('confirmPassword');
+
+  if (!newPassword || !confirmPassword) {
+    return null;
+  }
+
+  if (confirmPassword.value === '') {
+    return null;
+  }
+
+  if (newPassword.value === confirmPassword.value) {
+    return null;
+  }
+
+  return { passwordsNotMatching: true };
+};
